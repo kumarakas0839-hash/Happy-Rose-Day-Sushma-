@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rose Day for Sushma Ji 🌹</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', cursive;
+      background: linear-gradient(135deg, #ffe6eb, #ffb3c6);
+      text-align: center;
+      color: #7a0026;
+      overflow-x: hidden;
+    }
+    h1 { margin-top: 20px; font-size: 2.4em; }
+    .subtitle { font-size: 1.1em; margin-bottom: 10px; }
+
+    .bg-heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 22px;
+      opacity: 0.5;
+      animation: floatUp 10s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes floatUp {
+      to { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    .photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #ff4d6d;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+      margin: 15px auto 20px;
+      animation: glow 3s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0%,100% { box-shadow: 0 0 15px #ff4d6d; }
+      50% { box-shadow: 0 0 35px #ff99ac; }
+    }
+
+    .garden {
+      display: none;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .rose {
+      width: 110px;
+      height: 110px;
+      background: radial-gradient(circle at top, #ff4d6d, #c9184a);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.3em;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .popup {
+      background: #fff0f5;
+      padding: 25px;
+      border-radius: 25px;
+      max-width: 340px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.6); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh); opacity: 0; }
+    }
+
+    .bouquet { font-size: 4em; margin-bottom: 10px; }
+    .line { font-size: 1.05em; margin-bottom: 15px; }
+    .btn {
+      padding: 8px 18px;
+      margin: 5px;
+      border: none;
+      border-radius: 20px;
+      background: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      font-size: 0.95em;
+    }
+
+    footer { margin: 30px 0 20px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+
+<script>
+  for (let i = 0; i < 20; i++) {
+    const h = document.createElement('div');
+    h.className = 'bg-heart';
+    h.textContent = '💖';
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.animationDuration = (8 + Math.random() * 8) + 's';
+    document.body.appendChild(h);
+  }
+</script>
+
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg" />
+</audio>
+
+<div class="overlay" id="firstPopup">
+  <div class="popup">
+    <div class="bouquet">💐</div>
+    <div class="line">Will you accept my rose, <strong>Sushma Ji</strong>? 🌹💖</div>
+    <button class="btn" onclick="acceptRose()">Yes 😍</button>
+    <button class="btn" onclick="acceptRose()">Obviously Yes 💕</button>
+  </div>
+</div>
+
+<h1>🌹 Happy Rose Day Sushma Ji 🌹</h1>
+<p class="subtitle">⚠️ Warning: This website is made only to make you smile 😊💖</p>
+
+<img src="sushma.jpg" alt="Sushma Ji" class="photo" />
+
+<p class="subtitle">Tap the roses… magic awaits ✨</p>
+
+<div class="garden" id="garden">
+  <div class="rose" onclick="openLine(0)">🌹</div>
+  <div class="rose" onclick="openLine(1)">🌷</div>
+  <div class="rose" onclick="openLine(2)">🌸</div>
+  <div class="rose" onclick="openLine(3)">🌹</div>
+  <div class="rose" onclick="openLine(4)">💖</div>
+</div>
+
+<div class="overlay" id="linePopup" style="display:none;">
+  <div class="popup">
+    <div class="bouquet">💐</div>
+    <div class="line" id="cuteLine"></div>
+    <button class="btn" onclick="closeLine()">Aww 💕</button>
+  </div>
+</div>
+
+<div class="overlay" id="luxuryEnd" style="display:none;">
+  <div class="popup">
+    <div class="bouquet">🌹</div>
+    <div class="line">
+      This rose is not for a day…<br>
+      it’s a promise wrapped in petals 💎🌹<br><br>
+      <strong>Sushma Ji</strong>, aap meri zindagi ka sabse soft,
+      sabse cute aur sabse precious hissa ho 💖<br><br>
+      <em>I don’t just like you…<br>I choose you, every single day 🌸</em><br><br>
+      <strong>I Love You Sushma Ji 💕</strong>
+    </div>
+    <button class="btn" onclick="cuteExit()">🥰 Smile & Close</button>
+  </div>
+</div>
+    <div class="line">
+      This rose is not for a day…<br>
+      it’s a promise wrapped in petals 💎🌹<br><br>
+      <strong>Sushma Ji</strong>, aap meri zindagi ka sabse soft,
+      sabse cute aur sabse precious hissa ho 💖<br><br>
+      <em>I don’t just like you…<br>I choose you, every single day 🌸</em><br><br>
+      <strong>I Love You Sushma Ji 💕</strong>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Made with ❤️ only for Sushma Ji<br>
+  <strong>I Love You Sushma Ji 💖</strong>
+</footer>
+
+<script>
+  const lines = [
+    "Phool toh duniya ka har insaan de deta hai Sushma Ji, par jo pyaar, izzat aur khayal ke saath aapko har roz sambhale… wo sirf main banna chahta hoon 💖",
+    "Sushma Ji, phool sirf ek din khilte hain, par aapke liye mera pyaar har din naya hota hai 🌹",
+    "Phool dena aasaan hota hai Sushma Ji, par phool ki tarah sambhalna sirf dil se hota hai… aur mera dil sirf aapke liye hai 💕",
+    "Sushma Ji, agar pyaar ek ehsaas hai, toh aap meri zindagi ka sabse khoobsurat ehsaas ho ✨",
+    "Har rose ki khushboo alag hoti hai, aur meri har khushi ki wajah sirf aap ho Sushma Ji 🌸"
+  ];
+
+  function acceptRose() {
+    document.getElementById('firstPopup').style.display = 'none';
+    document.getElementById('garden').style.display = 'flex';
+    startHearts();
+  }
+
+  function startHearts() {
+    for (let i = 0; i < 40; i++) {
+      const s = document.createElement('div');
+      s.textContent = Math.random() > 0.5 ? '❤️' : '✨';
+      s.style.position = 'fixed';
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.top = '-30px';
+      s.style.fontSize = (Math.random() * 20 + 20) + 'px';
+      s.style.animation = 'fall 6s linear';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 6000);
+    }
+  }
+
+  function openLine(i) {
+    document.getElementById('cuteLine').innerText = lines[i % lines.length];
+    document.getElementById('linePopup').style.display = 'flex';
+  }
+
+  let shownFinal = false;
+
+  function closeLine() {
+    document.getElementById('linePopup').style.display = 'none';
+    if (!shownFinal) {
+      shownFinal = true;
+      setTimeout(showLuxuryEnd, 800);
+    }
+  }
+
+  function showLuxuryEnd() {
+    document.getElementById('luxuryEnd').style.display = 'flex';
+    finalHearts();
+    boostMusic();
+  }
+
+  function finalHearts() {
+    for (let i = 0; i < 70; i++) {
+      const h = document.createElement('div');
+      h.textContent = Math.random() > 0.4 ? '❤️' : '✨';
+      h.style.position = 'fixed';
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.top = '-40px';
+      h.style.fontSize = (Math.random() * 25 + 18) + 'px';
+      h.style.animation = 'fall 7s linear';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 7000);
+    }
+  }
+
+  function boostMusic() {
+    const audio = document.querySelector('audio');
+    if (audio) audio.volume = 0.8;
+  }
+
+  function cuteExit() {
+    document.getElementById('luxuryEnd').style.display = 'none';
+    finalHearts();
+  }
+</script>
+
+</body>
+</html>
