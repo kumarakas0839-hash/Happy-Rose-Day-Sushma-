@@ -1,0 +1,154 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rose Day for Sonali Ji 🌹</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', cursive;
+      background: linear-gradient(135deg, #ffe6eb, #ffb3c6);
+      text-align: center;
+      color: #7a0026;
+      overflow-x: hidden;
+    }
+    h1 { margin-top: 20px; font-size: 2.4em; }
+    .subtitle { font-size: 1.1em; margin-bottom: 10px; }
+
+    .bg-heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 22px;
+      opacity: 0.5;
+      animation: floatUp 10s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes floatUp {
+      to { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    .photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #ff4d6d;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+      margin: 15px auto 20px;
+      animation: glow 3s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0%,100% { box-shadow: 0 0 15px #ff4d6d; }
+      50% { box-shadow: 0 0 35px #ff99ac; }
+    }
+
+    .garden {
+      display: none;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .rose {
+      width: 110px;
+      height: 110px;
+      background: radial-gradient(circle at top, #ff4d6d, #c9184a);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.3em;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .overlay {
+  g  Made with ❤️ only for Sonali Ji<br>
+  <strong>I Love You Sonali Ji 💖</strong>
+</footer>
+
+<script>
+  const lines = [
+    "Phool toh duniya ka har insaan de deta hai sonali Ji, par jo pyaar, izzat aur khayal ke saath aapko har roz sambhale… wo sirf main banna chahta hoon 💖",
+    "Sonali Ji, phool sirf ek din khilte hain, par aapke liye mera pyaar har din naya hota hai 🌹",
+    "Phool dena aasaan hota hai Sonali Ji, par phool ki tarah sambhalna sirf dil se hota hai… aur mera dil sirf aapke liye hai 💕",
+    "Sonali Ji, agar pyaar ek ehsaas hai, toh aap meri zindagi ka sabse khoobsurat ehsaas ho ✨",
+    "Har rose ki khushboo alag hoti hai, aur meri har khushi ki wajah sirf aap ho Sonali Ji 🌸"
+  ];
+
+  function acceptRose() {
+    document.getElementById('firstPopup').style.display = 'none';
+    document.getElementById('garden').style.display = 'flex';
+    startHearts();
+  }
+
+  function startHearts() {
+    for (let i = 0; i < 40; i++) {
+      const s = document.createElement('div');
+      s.textContent = Math.random() > 0.5 ? '❤️' : '✨';
+      s.style.position = 'fixed';
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.top = '-30px';
+      s.style.fontSize = (Math.random() * 20 + 20) + 'px';
+      s.style.animation = 'fall 6s linear';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 6000);
+    }
+  }
+
+  function openLine(i) {
+    document.getElementById('cuteLine').innerText = lines[i % lines.length];
+    document.getElementById('linePopup').style.display = 'flex';
+  }
+
+  let shownFinal = false;
+
+  function closeLine() {
+    document.getElementById('linePopup').style.display = 'none';
+    if (!shownFinal) {
+      shownFinal = true;
+      setTimeout(showLuxuryEnd, 800);
+    }
+  }
+
+  function showLuxuryEnd() {
+    document.getElementById('luxuryEnd').style.display = 'flex';
+    finalHearts();
+    boostMusic();
+  }
+
+  function finalHearts() {
+    for (let i = 0; i < 70; i++) {
+      const h = document.createElement('div');
+      h.textContent = Math.random() > 0.4 ? '❤️' : '✨';
+      h.style.position = 'fixed';
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.top = '-40px';
+      h.style.fontSize = (Math.random() * 25 + 18) + 'px';
+      h.style.animation = 'fall 7s linear';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 7000);
+    }
+  }
+
+  function boostMusic() {
+    const audio = document.querySelector('audio');
+    if (audio) audio.volume = 0.8;
+  }
+
+  function cuteExit() {
+    document.getElementById('luxuryEnd').style.display = 'none';
+    finalHearts();
+  }
+</script>
+
+</body>
+</html
